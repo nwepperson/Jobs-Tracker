@@ -31,6 +31,31 @@ router.get('/new', authenticate, function(req, res, next) {
   res.render('jobs/new', { job: job, message: req.flash() });
 });
 
+//SEARCH
+router.post('/search', authenticate, function(req, res, next) {
+  var currentUser = req.user;
+  var filter = req.body.search;
+  console.log(filter);
+  //get info
+});
+
+//ADD
+router.post('/add', authenticate, function(req, res, next) {
+  console.log(req.body.add);
+  var currentUser = req.user;
+
+
+//getinfo
+  currentUser.jobs.push(job);
+  currentUser.save()
+  .then(function() {
+    res.redirect('/jobs');
+  }, function(err) {
+    return next(err);
+  });
+});
+});
+
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
   var job = currentUser.jobs.id(req.params.id);
