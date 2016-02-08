@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
+var api = require('indeed-api').getInstance(7726699244359231);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

@@ -19,8 +19,14 @@ router.get('/', authenticate, function(req, res, next) {
 // NEW
 router.get('/new', authenticate, function(req, res, next) {
   var job = {
-    title: '',
-    employer: ''
+  title: '',
+  company: '',
+  city: '',
+  state: '',
+  country: '',
+  postDate: '',
+  description: '',
+  applyUrl: ''
   };
   res.render('jobs/new', { job: job, message: req.flash() });
 });
@@ -36,7 +42,13 @@ router.get('/:id', authenticate, function(req, res, next) {
 router.post('/', authenticate, function(req, res, next) {
   var job = {
     title: req.body.title,
-    employer: req.body.employer
+  company: req.body.company,
+  city: req.body.city,
+  state: req.body.state,
+  country: req.body.country,
+  postDate: req.body.postDate,
+  description: req.body.description,
+  applyUrl: req.body.applyUrl
   };
   // Since a user's jobs are an embedded document, we just need to push a new
   // JOB to the user's list of jobs and save the user.

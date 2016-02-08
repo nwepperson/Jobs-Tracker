@@ -7,6 +7,8 @@ var User = new mongoose.Schema({
     email    : String,
     password : String
   },
+  firstName: { type: String },
+  lastName: { type: String },
   jobs : [Job.schema]
 });
 
