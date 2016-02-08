@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Job = require('../models/job');
+var api = require('indeed-api').getInstance("7726699244359231");
 
 var authenticate = function(req, res, next) {
   if(!req.isAuthenticated()) {
@@ -36,7 +37,29 @@ router.post('/search', authenticate, function(req, res, next) {
   var currentUser = req.user;
   var filter = req.body.search;
   console.log(filter);
-  //get info
+  api.JobSearch()
+  .WhereKeywords([filter])
+  .SortBy("date")
+  .UserIP("1.2.3.4")
+  .UserAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36")
+  .Search(
+    function (results) {
+    res.render('jobs/search', { results: results, message: req.flash() });
+    console.log(results);
+  },
+    function (error) {
+    // do something with the error results
+    console.log(error);
+  })
+;
+  // var doSearch = function (params, done, fail) {
+  // $.ajax({ [Initial Parameters] }, params),
+  //   dataType: 'jsonp',
+  //   type: 'GET',
+  //   timeout: 5000,
+  //   url: 'http://api.indeed.com/ads/apisearch'
+  // }).done(done).fail(fail);
+  // };
 });
 
 //ADD
@@ -53,7 +76,6 @@ router.post('/add', authenticate, function(req, res, next) {
   }, function(err) {
     return next(err);
   });
-});
 });
 
 // SHOW

@@ -14,7 +14,7 @@
           <form method="post" action="/jobs/add">
   <div class="form-group">
   <select name="add">
-    <% jobs.forEach(function(job) { %>
+    <% results.forEach(function(job) { %>
     <option value="<%=job.title%>"><%=job.title%></option>
     <% }) %>
   </select>
