@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+  <a href="/jobs" class="btn btn-primary">Back</a>
+  <a href="/jobs/<%= job._id %>/edit" class="btn btn-danger">Edit</a>
+    <div>
+      <h1><%= job.title %></h1>
+      <p><b>ID: </b><%= job._id %></p>
+      <p><b>Company: </b><%= job.company %></p>
+      <p><b>City: </b><%= job.city %></p>
+      <p><b>State: </b><%= job.state %></p>
+      <p><b>Country: </b><%= job.country %></p>
+      <p><b>Post Date: </b><%= job.postDate %></p>
+      <p><b>Description: </b><%= job.description %></p>
+      <p><b>Apply Url: </b><%= job.applyUrl %></p>
+    </div>
+  </main>
+
+<footer>
+  <% include ../partials/footer %>
+</footer>
+</body>
+</html>
