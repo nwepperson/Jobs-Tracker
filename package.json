@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
+  },
+  "engines": {
+    "node": "5.1.1",
+    "npm": "3.3.12"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
