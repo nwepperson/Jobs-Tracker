@@ -3,6 +3,8 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="javascript/script.js"></script>
   </head>
   <body>
     <header>
@@ -11,6 +13,18 @@
     <main>
       <h1><%= title %></h1>
       <p>Welcome to <%= title %></p>
+
+      <form id="search">
+        <input type="search" id="search-keyword">
+        <select id="search-type">
+          <option value="keywords">Search Jobs by Keywords</option>
+        </select>
+        <input type="submit" value="Submit">
+      </form>
+
+      <ul id="results"></ul>
+
+
     </main>
     <footer>
       <% include ../views/partials/footer %>
