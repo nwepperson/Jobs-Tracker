@@ -20,8 +20,8 @@ var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
 
-mongoose.connect('mongodb://localhost/jobs');
-
+// mongoose.connect('mongodb://localhost/jobs');
+mongoose.connect('mongodb://ancient-springs-85300.herokuapp.com');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
