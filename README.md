@@ -4,10 +4,6 @@ NEW PROJECT STARTUP
 express --ejs jobs
 cd jobs
 npm install
-echo '#!/bin/bash' > run.bash
-echo 'DEBUG=jobs:* npm start' >> run.bash
-chmod u+x run.bash
-
 npm install --save mongoose
 npm install --save method-override
 npm install --save kerberos
