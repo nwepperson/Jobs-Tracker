@@ -20,16 +20,7 @@ var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
 
-// mongoose.connect('mongodb://localhost/jobs');
-
-var mongoose = require('mongoose');
-
-var mongoURI = 'mongodb://localhost/jobs';
-var MongoDB = mongoose.connect(mongoURI).connection;
-MongoDB.on('error', function(err) { console.log(err.message); });
-MongoDB.once('open', function() {
-  console.log("mongodb connection open");
-});
+mongoose.connect('mongodb://localhost/jobs');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
