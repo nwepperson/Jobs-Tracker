@@ -18,6 +18,12 @@ router.get('/', authenticate, function(req, res, next) {
   res.render('jobs/index', { jobs: jobs, states: states, message: req.flash() });
 });
 
+// router.get('/.json', authenticate, function(req, res, next) {
+//   var jobs = global.currentUser.jobs;
+//   var states = ['Washington DC', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Georgia', 'Kentucky', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusets', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska' ,'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+//   res.renderJSON('jobs/index', { jobs: jobs, states: states, message: req.flash() });
+// });
+
 // NEW
 router.get('/new', authenticate, function(req, res, next) {
   var job = {
@@ -28,7 +34,8 @@ router.get('/new', authenticate, function(req, res, next) {
   country: '',
   postDate: '',
   description: '',
-  applyUrl: ''
+  applyUrl: '',
+  jobkey: ''
   };
   res.render('jobs/new', { job: job, message: req.flash() });
 });
@@ -92,7 +99,7 @@ router.post('/add', authenticate, function(req, res, next) {
   api.GetJob().WhereJobKeys(jobkeys).Retrieve(
   function (results) {
     var add = results.results[0];
-    console.log(add.jobtitle);
+    console.log(add.jobkey);
     var job = {
       title: add.jobtitle,
       company: add.company,
@@ -101,7 +108,8 @@ router.post('/add', authenticate, function(req, res, next) {
       country: add.country,
       postDate: add.date,
       description: add.snippet,
-      applyUrl: add.url
+      applyUrl: add.url,
+      jobkey: add.jobkey
     };
     currentUser.jobs.push(job);
     currentUser.save()
@@ -134,11 +142,12 @@ router.post('/', authenticate, function(req, res, next) {
   country: req.body.country,
   postDate: req.body.postDate,
   description: req.body.description,
-  applyUrl: req.body.applyUrl
+  applyUrl: req.body.applyUrl,
+  jobkey: req.body.jobkey
   };
   // Since a user's jobs are an embedded document, we just need to push a new
   // JOB to the user's list of jobs and save the user.
-  currentUser.jobs.push(todo);
+  currentUser.jobs.push(job);
   currentUser.save()
   .then(function() {
     res.redirect('/jobs');
