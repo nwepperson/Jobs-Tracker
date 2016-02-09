@@ -14,7 +14,8 @@ var authenticate = function(req, res, next) {
 // INDEX
 router.get('/', authenticate, function(req, res, next) {
   var jobs = global.currentUser.jobs;
-  res.render('jobs/index', { jobs: jobs, message: req.flash() });
+  var states = ['Washington DC', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Georgia', 'Kentucky', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusets', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska' ,'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+  res.render('jobs/index', { jobs: jobs, states: states, message: req.flash() });
 });
 
 // NEW
@@ -35,45 +36,84 @@ router.get('/new', authenticate, function(req, res, next) {
 //SEARCH
 router.post('/search', authenticate, function(req, res, next) {
   var currentUser = req.user;
-  var filter = req.body.search;
-  console.log(filter);
+  var keywords = [req.body.keywords];
+  var city = req.body.city;
+  var state = req.body.state;
+  var radius = req.body.radius;
+  var limit = req.body.limit;
+  if (keywords.length > 0) {
   api.JobSearch()
-  .WhereKeywords([filter])
+  .Radius(radius)
+  .WhereKeywords(keywords)
+  .WhereLocation({
+    city: city,
+    state: state
+  })
+  .Limit(limit)
   .SortBy("date")
   .UserIP("1.2.3.4")
   .UserAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36")
-  .Search(
-    function (results) {
-    res.render('jobs/search', { results: results.results, message: req.flash() });
-    console.log(results.results[0].jobkey);
+  .Search(function (results) {
+    res.render('jobs/search', { jobs: results.results, message: req.flash() });
+    // console.log(results.results[0].jobkey);
   },
     function (error) {
-    // do something with the error results
+
     console.log(error);
   });
-  // var doSearch = function (params, done, fail) {
-  // $.ajax({ [Initial Parameters] }, params),
-  //   dataType: 'jsonp',
-  //   type: 'GET',
-  //   timeout: 5000,
-  //   url: 'http://api.indeed.com/ads/apisearch'
-  // }).done(done).fail(fail);
-  // };
+  }
+  else {
+  api.JobSearch()
+  .Radius(radius)
+  .WhereLocation({
+    city: city,
+    state: state
+  })
+  .Limit(limit)
+  .SortBy("date")
+  .UserIP("1.2.3.4")
+  .UserAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36")
+  .Search(function (results) {
+    res.render('jobs/search', { jobs: results.results, message: req.flash() });
+    // console.log(results.results[0].jobkey);
+  },
+    function (error) {
+
+    console.log(error);
+  });
+  };
 });
 
 //ADD
 router.post('/add', authenticate, function(req, res, next) {
   console.log(req.body.add);
+  jobkeys = [req.body.add];
   var currentUser = req.user;
-
-
-//getinfo
-  currentUser.jobs.push(job);
-  currentUser.save()
-  .then(function() {
-    res.redirect('/jobs');
-  }, function(err) {
-    return next(err);
+  api.GetJob().WhereJobKeys(jobkeys).Retrieve(
+  function (results) {
+    var add = results.results[0];
+    console.log(add.jobtitle);
+    var job = {
+      title: add.jobtitle,
+      company: add.company,
+      city: add.city,
+      state: add.state,
+      country: add.country,
+      postDate: add.date,
+      description: add.snippet,
+      applyUrl: add.url
+    };
+    currentUser.jobs.push(job);
+    currentUser.save()
+    .then(function() {
+      res.redirect('/jobs');
+    }, function(err) {
+      return next(err);
+    });
+  },
+  function (error) {
+    // do something with the error results
+    console.log(error);
   });
 });
 
@@ -87,7 +127,7 @@ router.get('/:id', authenticate, function(req, res, next) {
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
   var job = {
-    title: req.body.title,
+  title: req.body.title,
   company: req.body.company,
   city: req.body.city,
   state: req.body.state,
