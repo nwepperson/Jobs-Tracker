@@ -9,7 +9,7 @@ var JobSchema = new mongoose.Schema({
   postDate: { type: String, require: true },
   description: { type: String, require: true },
   applyUrl: { type: String, require: true },
-  jobkey: { type: String, require: true, unique: true },
+  jobkey: { type: String, require: true },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
