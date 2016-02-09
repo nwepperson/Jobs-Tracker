@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
-var api = require('indeed-api').getInstance(7726699244359231);
+// var api = require('indeed-api').getInstance(7726699244359231);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -20,7 +20,11 @@ var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
 
+<<<<<<< HEAD
 //mongoose.connect('mongodb://localhost/jobs');
+=======
+mongoose.connect('mongodb://localhost/jobs');
+>>>>>>> e6dd4b8da9168e400cf4a9af97794426e2821eef
 mongoose.connect('mongodb://ancient-springs-85300.herokuapp.com');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
