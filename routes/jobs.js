@@ -128,7 +128,7 @@ router.post('/add', authenticate, function(req, res, next) {
         };
       };
     };
-    if (matchstat == false) {
+    if (matchstat == false || !matchstat) {
     currentUser.jobs.push(job);
     currentUser.save()
     .then(function() {
