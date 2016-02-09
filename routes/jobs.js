@@ -110,6 +110,25 @@ router.post('/add', authenticate, function(req, res, next) {
       applyUrl: add.url,
       jobkey: add.jobkey
     };
+    array = [];
+    array.push(currentUser.jobs);
+    if (array.length > 0) {
+      for (i = 0; i < array.length; i++) {
+        var matches = array[i];
+        for (j = 0; j < matches.length; j++) {
+          var match = matches[j];
+          if (match) {
+            if (match.jobkey == job.jobkey) {
+              matchstat = true
+            }
+            else {
+              matchstat = false
+            };
+          };
+        };
+      };
+    };
+    if (matchstat == false) {
     currentUser.jobs.push(job);
     currentUser.save()
     .then(function() {
@@ -117,6 +136,12 @@ router.post('/add', authenticate, function(req, res, next) {
     }, function(err) {
       return next(err);
     });
+    }
+    else {
+      var jobs = currentUser.jobs;
+      var states = ['Washington DC', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Georgia', 'Kentucky', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusets', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska' ,'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+      res.render('jobs/index', { jobs: jobs, states: states, message: req.flash() });
+    };
   },
   function (error) {
     // do something with the error results
