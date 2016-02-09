@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Job = require('../models/job');
+var User = require('../models/user')
 var api = require('indeed-api').getInstance("7726699244359231");
 
 var authenticate = function(req, res, next) {
@@ -93,13 +94,11 @@ router.post('/search', authenticate, function(req, res, next) {
 
 //ADD
 router.post('/add', authenticate, function(req, res, next) {
-  console.log(req.body.add);
   jobkeys = [req.body.add];
   var currentUser = req.user;
   api.GetJob().WhereJobKeys(jobkeys).Retrieve(
   function (results) {
     var add = results.results[0];
-    console.log(add.jobkey);
     var job = {
       title: add.jobtitle,
       company: add.company,
@@ -168,11 +167,18 @@ router.put('/:id', authenticate, function(req, res, next) {
   var job = currentUser.jobs.id(req.params.id);
   if (!job) return next(makeError(res, 'Document not found', 404));
   else {
-    job.title = req.body.title;
-    job.employer = req.body.employer;
+    job.title = req.body.title,
+    job.company = req.body.company,
+    job.city = req.body.city,
+    job.state = req.body.state,
+    job.country = req.body.country,
+    job.postDate = req.body.postDate,
+    job.description = req.body.description,
+    job.applyUrl = req.body.applyUrl,
+    job.jobkey = req.body.jobkey
     currentUser.save()
     .then(function(saved) {
-      res.redirect('/todos');
+      res.redirect('/jobs');
     }, function(err) {
       return next(err);
     });
