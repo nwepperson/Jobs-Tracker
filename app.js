@@ -11,6 +11,11 @@ var session = require('express-session');
 var flash = require('connect-flash');
 // var api = require('indeed-api').getInstance(7726699244359231);
 
+// for websockets
+var server  = require('http').createServer(app);
+var Twit = require('twit');
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var jobs = require('./routes/jobs');
@@ -54,6 +59,32 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 app.use('/jobs', jobs);
+
+// websockets
+server.listen(port);
+
+var io = require('socket.io')(server);
+
+var twitter = new Twit({
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token: process.env.TWITTER_ACCESS_TOKEN,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET });
+
+console.log(twitter);
+
+var stream = twitter.stream('statuses/filter', { track: 'javacript' });
+
+io.on('connect', function(socket) {
+  stream.on('tweet', function(tweet) {
+    var data = {};
+      data.name = tweet.user.name;
+      data.screen_name = tweet.user.screen_name;
+      data.text = tweet.text;
+      data.user_profile_image = tweet.user.profile_image_url;
+      socket.emit('tweets', data);
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
