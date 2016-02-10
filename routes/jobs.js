@@ -31,7 +31,8 @@ router.get('/new', authenticate, function(req, res, next) {
   description: '',
   applyUrl: '',
   jobkey: '',
-  applied: false
+  applied: false,
+  followUp: false
   };
   res.render('jobs/new', { job: job, message: req.flash() });
 });
@@ -104,7 +105,8 @@ router.post('/add', authenticate, function(req, res, next) {
       description: add.snippet,
       applyUrl: add.url,
       jobkey: add.jobkey,
-      applied: false
+      applied: false,
+      followUp: false
     };
     array = [];
     var matchstat = false
@@ -162,7 +164,8 @@ router.post('/', authenticate, function(req, res, next) {
   description: req.body.description,
   applyUrl: req.body.applyUrl,
   jobkey: req.body.jobkey,
-  applied: req.body.applied
+  applied: req.body.applied,
+  followUp: req.body.followUp
   };
   // Since a user's jobs are an embedded document, we just need to push a new
   // JOB to the user's list of jobs and save the user.
@@ -196,7 +199,8 @@ router.put('/:id', authenticate, function(req, res, next) {
     job.description = req.body.description,
     job.applyUrl = req.body.applyUrl,
     job.jobkey = req.body.jobkey,
-    job.applied = req.body.applied
+    job.applied = req.body.applied,
+    job.followUp = req.body.followUp
     currentUser.save()
     .then(function(saved) {
       res.redirect('/jobs');

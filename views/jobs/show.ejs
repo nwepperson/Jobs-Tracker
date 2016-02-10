@@ -26,6 +26,12 @@
       <% if (job.applied == false || !job.applied) { %>
         <p style="color:red;"><b>Applied: </b>Apply Soon!</p>
       <% } %>
+      <% if (job.followUp == true) { %>
+        <p style="color:green;"><b>Follow Up: </b>Already Followed Up!</p>
+      <% } %>
+      <% if (job.followUp == false || !job.followUp) { %>
+        <p style="color:red;"><b>Follow Up: </b>Follow Up Soon!</p>
+      <% } %>
       <a href="<%=job.applyUrl%>" class="btn btn-primary">Apply</a>
     </div>
   </main>
