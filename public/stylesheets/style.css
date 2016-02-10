@@ -1,9 +1,5 @@
-html {
-  background-color: #000000;
-}
-
 body {
-  background-color: #999999;
+  background-color: #FFFFFF;
   padding: 30px;
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/*/
 }
@@ -23,7 +19,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #D3D3D3;
+    background-color: #EBEBEB;
 }
 
 li {
@@ -38,14 +34,45 @@ li, a {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #9D9D9D;
+button, input, select, textarea {
+  font-size: xx-Large;
 }
 
+input.form-control {
+  width: 33%;
+}
+
+/*input#email.form-control {
+  width: 33%;
+}
+
+input#password.form-control {
+  width: 33%;
+}
+
+input#keywords.form-control {
+  width: 33%;
+}*/
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #FFFFFF;
+}
+
+.container-fluid {
+  background-color: #FFFFFF;
+}
+
+div.form-group div {
+  background-color: #EBEBEB;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
 
 footer {
-  background-color: #6D6D6D;
+  background-color: #979595;
 }
 
 .text-muted {
