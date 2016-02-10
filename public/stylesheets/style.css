@@ -1,8 +1,53 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  background-color: #000000;
 }
 
-a {
+body {
+  background-color: #999999;
+  padding: 30px;
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/*/
+}
+
+.navbar-brand {
+  font-size: 32px;
+}
+
+/*ul, li, a {
   color: #00B7FF;
+  text-decoration: none;
+  list-style: none;
+}*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #D3D3D3;
+}
+
+li {
+    float: left;
+}
+
+li, a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 8px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #9D9D9D;
+}
+
+
+footer {
+  background-color: #6D6D6D;
+}
+
+.text-muted {
+  color: #ffffff;
 }

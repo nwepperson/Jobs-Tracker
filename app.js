@@ -20,10 +20,15 @@ var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
 
+<<<<<<< HEAD
 // mongoose.connect('mongodb://localhost/jobs');
 // mongoose.connect('mongodb://ancient-springs-85300.herokuapp.com');
 mongoose.connect('mongodb://nate:icarus25@ds027155.mongolab.com:27155/jobs_tracker');
 
+=======
+mongoose.connect('mongodb://localhost/jobs');
+mongoose.connect('mongodb://ancient-springs-85300.herokuapp.com');
+>>>>>>> Sam
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

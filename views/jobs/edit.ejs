@@ -8,7 +8,7 @@
     <% include ../partials/header %>
   </header>
   <main>
-    <h3>EDIT</h3>
+    <h3>edit</h3>
     <form class="job-form" action="/jobs/<%= job._id %>?_method=PUT" method="post">
       <% include _form %>
       <a href="/jobs/<% job._id %>" class="btn btn-primary">Back</a>
