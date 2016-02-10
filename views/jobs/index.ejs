@@ -21,13 +21,15 @@
         name="city"
         required>
       <label>State</label><br>
-      <select name="state">
+      <select name="state"
+              class="form-control">
         <% states.forEach(function(state) { %>
           <option value="<%=state%>"><%=state%></option>
         <% }) %>
       </select><br>
       <label>Within Miles</label><br>
-      <select name="radius">
+      <select name="radius"
+              class="form-control">
         <option value=5>5 miles</option>
         <option value=10>10 miles</option>
         <option value=15>15 miles</option>
@@ -40,7 +42,8 @@
         <option value=50>50 miles</option>
       </select><br>
       <label>Posted When</label><br>
-      <select name="limit">
+      <select name="limit"
+              class="form-control">
         <option value=30>Past 30 days</option>
         <option value=14>Past 2 Weeks</option>
         <option value=7>Past Week</option>
