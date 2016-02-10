@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Job = require('../models/job');
 var User = require('../models/user')
-var api = process.env.INDEED_KEY;
+process.env.INDEED_KEY;
 
 var authenticate = function(req, res, next) {
   if(!req.isAuthenticated()) {
