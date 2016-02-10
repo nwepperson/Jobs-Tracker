@@ -8,6 +8,24 @@ body {
   font-size: 32px;
 }
 
+#search {
+  display: inline-block;
+  border: 3px red solid;
+  width: 33%;
+}
+
+#results {
+  display: inline-block;
+  border: 3px blue solid;
+  width: 66%;
+  float: right;
+}
+
+#jobs {
+  display: block;
+  border: 3px green solid;
+}
+
 /*ul, li, a {
   color: #00B7FF;
   text-decoration: none;
@@ -64,7 +82,7 @@ li a:hover {
 }
 
 div.form-group {
-  width: 25%;
+  width: 95%;
   line-height: 200%;
 }
 
