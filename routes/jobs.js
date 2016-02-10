@@ -94,59 +94,57 @@ router.post('/search', authenticate, function(req, res, next) {
 
 //ADD
 router.post('/add', authenticate, function(req, res, next) {
-  jobkeys = [req.body.add];
-  var currentUser = req.user;
-  api.GetJob().WhereJobKeys(jobkeys).Retrieve(
-  function (results) {
-    var add = results.results[0];
-    var job = {
-      title: add.jobtitle,
-      company: add.company,
-      city: add.city,
-      state: add.state,
-      country: add.country,
-      postDate: add.date,
-      description: add.snippet,
-      applyUrl: add.url,
-      jobkey: add.jobkey
-    };
-    array = [];
-    array.push(currentUser.jobs);
-    if (array.length > 0) {
-      for (i = 0; i < array.length; i++) {
-        var matches = array[i];
-        for (j = 0; j < matches.length; j++) {
-          var match = matches[j];
-          if (match) {
-            if (match.jobkey == job.jobkey) {
-              matchstat = true
-            }
-            else {
-              matchstat = false
-            };
-          };
-        };
-      };
-    };
-    if (matchstat == false || !matchstat) {
-    currentUser.jobs.push(job);
-    currentUser.save()
-    .then(function() {
-      res.redirect('/jobs');
-    }, function(err) {
-      return next(err);
-    });
-    }
-    else {
-      var jobs = currentUser.jobs;
-      var states = ['Washington DC', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Georgia', 'Kentucky', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusets', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska' ,'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
-      res.render('jobs/index', { jobs: jobs, states: states, message: req.flash() });
-    };
-  },
-  function (error) {
-    // do something with the error results
-    console.log(error);
-  });
+ jobkeys = [req.body.add];
+ var currentUser = req.user;
+ api.GetJob().WhereJobKeys(jobkeys).Retrieve(
+ function (results) {
+   var add = results.results[0];
+   var job = {
+     title: add.jobtitle,
+     company: add.company,
+     city: add.city,
+     state: add.state,
+     country: add.country,
+     postDate: add.date,
+     description: add.snippet,
+     applyUrl: add.url,
+     jobkey: add.jobkey
+   };
+   array = [];
+   var matchstat = false
+   array.push(currentUser.jobs);
+   if (array.length > 0) {
+     for (i = 0; i < array.length; i++) {
+       var matches = array[i];
+       for (j = 0; j < matches.length; j++) {
+         var match = matches[j];
+         if (match) {
+           if (match.jobkey == job.jobkey) {
+             matchstat = true
+           };
+         };
+       };
+     };
+   };
+   if (matchstat == false) {
+   currentUser.jobs.push(job);
+   currentUser.save()
+   .then(function() {
+     res.redirect('/jobs');
+   }, function(err) {
+     return next(err);
+   });
+   }
+   else {
+     var jobs = currentUser.jobs;
+     var states = ['Washington DC', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Georgia', 'Kentucky', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusets', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska' ,'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
+     res.render('jobs/index', { jobs: jobs, states: states, message: req.flash() });
+   };
+ },
+ function (error) {
+   // do something with the error results
+   console.log(error);
+ });
 });
 
 // SHOW
