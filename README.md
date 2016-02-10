@@ -18,5 +18,8 @@ General Assembly WDI February 12, 2016
 * Node.js
 * Bootstrap
 * Heroku
+* Indeed API
 
 ### What's Next / Future Deployments
+* Connect to other Job APIs
+* Integrate Google Maps API
