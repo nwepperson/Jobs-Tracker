@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var flash = require('connect-flash');
-var api = require('indeed-api').getInstance(7726699244359231);
+// var api = require('indeed-api').getInstance(7726699244359231);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -20,7 +20,7 @@ var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
 
-mongoose.connect('mongodb://localhost/jobs');
+mongoose.connect('mongodb://nate:icarus25@ds027155.mongolab.com:27155/jobs_tracker');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
