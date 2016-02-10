@@ -12,18 +12,13 @@ var authenticate = function(req, res, next) {
     next();
   }
 };
+
 // INDEX
 router.get('/', authenticate, function(req, res, next) {
   var jobs = global.currentUser.jobs;
   var states = ['Washington DC', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Georgia', 'Kentucky', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusets', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska' ,'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
   res.render('jobs/index', { jobs: jobs, states: states, message: req.flash() });
 });
-
-// router.get('/.json', authenticate, function(req, res, next) {
-//   var jobs = global.currentUser.jobs;
-//   var states = ['Washington DC', 'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Georgia', 'Kentucky', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusets', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska' ,'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
-//   res.renderJSON('jobs/index', { jobs: jobs, states: states, message: req.flash() });
-// });
 
 // NEW
 router.get('/new', authenticate, function(req, res, next) {
@@ -84,7 +79,6 @@ router.post('/search', authenticate, function(req, res, next) {
   .UserAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36")
   .Search(function (results) {
     res.render('jobs/search', { jobs: results.results, message: req.flash() });
-    res.renderJSON('jobs/search', { jobs: results.results, message: req.flash() });
     // console.log(results.results[0].jobkey);
   },
     function (error) {

@@ -10,7 +10,7 @@ var JobSchema = new mongoose.Schema({
   description: { type: String, require: true },
   applyUrl: { type: String, require: true },
   jobkey: { type: String, require: true },
-  applied: { type: Boolean, require: true }
+  applied: { type: Boolean, require: true },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
