@@ -14,15 +14,13 @@
   <a href="/jobs/<%= job._id %>/edit" class="btn btn-danger">Edit</a>
     <div>
       <h1><%= job.title %></h1>
-      <p><b>ID: </b><%= job._id %></p>
-      <p><b>JOBKEY: </b><%= job.jobkey %></p>
       <p><b>Company: </b><%= job.company %></p>
       <p><b>City: </b><%= job.city %></p>
       <p><b>State: </b><%= job.state %></p>
       <p><b>Country: </b><%= job.country %></p>
       <p><b>Post Date: </b><%= job.postDate %></p>
       <p><b>Description: </b><%= job.description %></p>
-      <p><b>Apply Url: </b><a href="<%=job.applyUrl%>"><%= job.applyUrl %></a></p>
+      <a href="<%=job.applyUrl%>" class="btn btn-primary">Apply</a>
     </div>
   </main>
 
