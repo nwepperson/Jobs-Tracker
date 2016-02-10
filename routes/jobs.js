@@ -84,6 +84,7 @@ router.post('/search', authenticate, function(req, res, next) {
   .UserAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63 Safari/537.36")
   .Search(function (results) {
     res.render('jobs/search', { jobs: results.results, message: req.flash() });
+    res.renderJSON('jobs/search', { jobs: results.results, message: req.flash() });
     // console.log(results.results[0].jobkey);
   },
     function (error) {
