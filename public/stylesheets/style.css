@@ -39,7 +39,7 @@ button, input, select, textarea {
 }
 
 input.form-control {
-  width: 33%;
+  width: 100%;
 }
 
 /*input#email.form-control {
@@ -61,6 +61,15 @@ li a:hover {
 
 .container-fluid {
   background-color: #FFFFFF;
+}
+
+div.form-group {
+  width: 25%;
+  line-height: 200%;
+}
+
+div.form-group select {
+  width: 100%;
 }
 
 div.form-group div {
