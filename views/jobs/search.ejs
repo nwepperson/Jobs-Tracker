@@ -19,17 +19,17 @@
                 <option value="<%=job.jobkey%>"><%=job.jobtitle%></option>
               <% }) %>
             </select> -->
-          <div>
-            <h1><%= job.title %></h1>
-            <p><b>Company: </b><%= job.company %></p>
-            <p><b>City: </b><%= job.city %></p>
-            <p><b>State: </b><%= job.state %></p>
-            <p><b>Country: </b><%= job.country %></p>
-            <p><b>Post Date: </b><%= job.date %></p>
-            <p><b>Description: </b><%= job.snippet %></p>
-            <p><b>Apply Url: </b><a href="<%=job.url%>"><%= job.url %></a></p>
-          </div>
-            <button name="add" type="submit" class="btn btn-default" value="<%=job.jobkey%>">Add</button>
+            <div class="well">
+              <h1><%= job.title %></h1>
+              <p><b>Company: </b><%= job.company %></p>
+              <p><b>City: </b><%= job.city %>, <%= job.state %></p>
+              <p><b>Country: </b><%= job.country %></p>
+              <p><b>Post Date: </b><%= job.date %></p>
+              <p><b>Description: </b><%= job.snippet %></p>
+              <p><a class="btn btn-success" href="<%=job.url%>">Apply</a>
+              <button name="add" type="submit" class="btn btn-default" value="<%=job.jobkey%>">Add</button></p>
+            </div>
+
           </div>
         </form>
         <% }) %>

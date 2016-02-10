@@ -20,8 +20,6 @@ var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
 
-// mongoose.connect('mongodb://localhost/jobs');
-// mongoose.connect('mongodb://ancient-springs-85300.herokuapp.com');
 mongoose.connect('mongodb://nate:icarus25@ds027155.mongolab.com:27155/jobs_tracker');
 
 // view engine setup
