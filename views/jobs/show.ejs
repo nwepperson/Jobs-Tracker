@@ -20,6 +20,12 @@
       <p><b>Country: </b><%= job.country %></p>
       <p><b>Post Date: </b><%= job.postDate %></p>
       <p><b>Description: </b><%= job.description %></p>
+      <% if (job.applied == true) { %>
+        <p style="color:green;"><b>Applied: </b>Already applied!</p>
+      <% } %>
+      <% if (job.applied == false || !job.applied) { %>
+        <p style="color:red;"><b>Applied: </b>Apply Soon!</p>
+      <% } %>
       <a href="<%=job.applyUrl%>" class="btn btn-primary">Apply</a>
     </div>
   </main>

@@ -61,3 +61,10 @@
          name="applyUrl"
          value="<%= job.applyUrl %>">
 </div>
+
+<div class="form-group">
+  <label for="applied">Applied</label>
+  <input type="checkbox"
+         name="applied"
+         <%= job.applied ? 'checked' : '' %> >
+</div>
