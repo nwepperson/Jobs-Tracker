@@ -3,12 +3,10 @@
 <head>
   <% include ../partials/head %>
 </head>
-
 <body>
   <header>
     <% include ../partials/header %>
   </header>
-
   <main>
     <h3>EDIT</h3>
     <form class="job-form" action="/jobs/<%= job._id %>?_method=PUT" method="post">
@@ -17,7 +15,6 @@
       <button type="submit" class="btn btn-success">Save</button>
     </form>
   </main>
-
 <footer>
   <% include ../partials/footer %>
 </footer>
