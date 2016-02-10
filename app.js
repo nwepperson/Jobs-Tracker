@@ -18,8 +18,8 @@ var app = express();
 var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
-// var uristring = process.env.MONGO_URI
-mongoose.connect('mongodb://nate:icarus25@ds027155.mongolab.com:27155/jobs_tracker');
+var uristring = process.env.MONGO_URI
+mongoose.connect(uristring);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
