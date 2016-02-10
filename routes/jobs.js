@@ -108,6 +108,7 @@ router.post('/add', authenticate, function(req, res, next) {
       applied: false
     };
     array = [];
+    var matchstat = false
     array.push(currentUser.jobs);
     if (array.length > 0) {
       for (i = 0; i < array.length; i++) {
@@ -117,15 +118,12 @@ router.post('/add', authenticate, function(req, res, next) {
           if (match) {
             if (match.jobkey == job.jobkey) {
               matchstat = true
-            }
-            else {
-              matchstat = false
             };
           };
         };
       };
     };
-    if (matchstat == false || !matchstat) {
+    if (matchstat == false) {
     currentUser.jobs.push(job);
     currentUser.save()
     .then(function() {
