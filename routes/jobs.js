@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Job = require('../models/job');
 var User = require('../models/user')
-var api = require('indeed-api').getInstance("7726699244359231");
+var api = require('indeed-api').getInstance(process.env.INDEED_KEY);
 
 var authenticate = function(req, res, next) {
   if(!req.isAuthenticated()) {
