@@ -18,7 +18,7 @@ var app = express();
 var db = require('./db');
 var Job = require("./models/job");
 var User = require("./models/user");
-var uristring = process.env.MONGO_URI
+var uristring = process.env.MONGO_URI || 'mongodb://localhost/jobs'
 mongoose.connect(uristring);
 
 // view engine setup
