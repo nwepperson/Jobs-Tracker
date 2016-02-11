@@ -58,7 +58,13 @@
       <div>
         <form method="POST" action="/jobs/<%= job._id %>?_method=DELETE">
           <a href="/jobs/<%= job._id %>">
-            <%= job.title + ' - ' + job.company %>
+            <%= job.title + ' - ' + job.company %><br>
+            <label for="applied">Applied</label>
+            <input type="checkbox" name="applied" disabled
+            <%= job.applied ? 'checked' : '' %> ><br>
+            <label for="followUp">Followed Up</label>
+            <input type="checkbox"name="followUp" disabled
+            <%= job.followUp ? 'checked' : '' %> >
           </a>
           <button type="submit" class="btn btn-info" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
         </form>
