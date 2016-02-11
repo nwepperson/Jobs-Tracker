@@ -10,6 +10,9 @@ General Assembly WDI February 12, 2016
 ## Project Notes
 * [Wireframes](https://drive.google.com/file/d/0B7VisA2q3bJlOV9qSE9qTVlxM0U/view?usp=sharing)
 ![Home page](/public/images/jobs_deliverables.jpg)
+![Sign up](/public/images/jobs2.jpg)
+![Job search](/public/images/jobs3.jpg)
+![User profile](/public/images/jobs4.jpg)
 
 * [Entity Relationship Diagram](https://drive.google.com/file/d/0B7VisA2q3bJlTldtU1BnS3lVZUE/view?usp=sharing)
 * User Stories
