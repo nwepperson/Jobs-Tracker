@@ -8,15 +8,14 @@ General Assembly WDI February 12, 2016
 * [Deployed App on Heroku](https://ancient-springs-85300.herokuapp.com/)
 
 ## Project Notes
-* [Wireframes](https://drive.google.com/file/d/0B7VisA2q3bJlOV9qSE9qTVlxM0U/view?usp=sharing)
+* [Wireframes & ERD](https://drive.google.com/file/d/0B7VisA2q3bJlOV9qSE9qTVlxM0U/view?usp=sharing)
 ![Home page](/public/images/jobs_deliverables.jpg)
 ![Sign up](/public/images/jobs2.jpg)
 ![Job search](/public/images/job3.jpg)
 ![User profile](/public/images/jobs4.jpg)
-
-* Entity Relationship Diagram:
 ![ERD](/public/images/Jobs-Tracker-ERD.png)
-* User Stories
+
+### User Stories
 - EPIC: As a jobseeker I want to be able to easily search for jobs and keep track
 of my applications in one place.
 - DETAIL: I want to search for relevant jobs from a variety of sources.
@@ -26,6 +25,7 @@ and need to follow up with.
 
 ### Technologies Used
 * MongoDB
+* MongoLab
 * Express
 * Node.js
 * Bootstrap
