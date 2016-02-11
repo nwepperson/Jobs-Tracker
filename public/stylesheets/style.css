@@ -45,8 +45,39 @@ li a:hover {
 
 footer {
   background-color: #6D6D6D;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 18px;
+}
+
+a {
+  font-size: 18px;
 }
 
 .text-muted {
   color: #ffffff;
+}
+
+/*flexbox styling*/
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  /*align-items: stretch;*/
+}
+
+.flex-item {
+  margin-right: auto;
+  float: left;
+  height: 100%;
+  width: 30%;
+}
+
+.flex-item1 {
+  margin-left: auto;
+  float: right;
+  height: 100%;
+  width: 65%;
 }
