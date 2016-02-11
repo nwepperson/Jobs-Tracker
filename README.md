@@ -17,6 +17,12 @@ General Assembly WDI February 12, 2016
 * Entity Relationship Diagram:
 ![ERD](/public/images/Jobs-Tracker-ERD.png)
 * User Stories
+- EPIC: As a jobseeker I want to be able to easily search for jobs and keep track
+of my applications in one place.
+- DETAIL: I want to search for relevant jobs from a variety of sources.
+- DETAIL: When I find a job I like, I want to be able to save that job to my profile.
+- DETAIL: From my profile page, I want to be able to see which jobs I have applied to
+and need to follow up with.
 
 ### Technologies Used
 * MongoDB
