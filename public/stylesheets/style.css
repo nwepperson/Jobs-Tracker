@@ -45,8 +45,22 @@ li a:hover {
 
 footer {
   background-color: #6D6D6D;
+  margin-top: 20px
 }
 
 .text-muted {
   color: #ffffff;
 }
+
+/*flexbox styling*/
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  /*align-items: stretch;*/
+}
+
+.flex-item {
+  margin-right: auto;
+}
+
