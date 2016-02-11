@@ -88,4 +88,10 @@ a {
 
 .blue:hover {
   color: white !important;
+  background-color: #008cba !important;
+  border-radius: 10%;
+}
+
+.btn {
+  border-radius: 10% !important;
 }
