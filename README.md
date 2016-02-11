@@ -1,7 +1,7 @@
 # Jobs Tracker
 Project 3: Easily find, apply and keep track of your job search
 
-General Assembly WDI February 12, 2016
+General Assembly WDI February 12, 2016 Atlanta, GA
 
 ## Links
 * [Main Github Repo](https://github.com/nwepperson/Jobs-Tracker)
@@ -36,3 +36,6 @@ and need to follow up with.
 * Connect to other Job APIs
 * Integrate Google Maps API
 * Integrate email alerts for following up on applications
+
+### Presentation
+[Link to screencast](https://drive.google.com/file/d/0B7VisA2q3bJlVDYtTUNXYnRSNEE/view?usp=sharing)
