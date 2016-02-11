@@ -14,7 +14,7 @@ General Assembly WDI February 12, 2016
 ![Job search](/public/images/job3.jpg)
 ![User profile](/public/images/jobs4.jpg)
 
-* [Entity Relationship Diagram](https://drive.google.com/file/d/0B7VisA2q3bJlTldtU1BnS3lVZUE/view?usp=sharing)
+* Entity Relationship Diagram:
 ![ERD](/public/images/Jobs-Tracker-ERD.png)
 * User Stories
 
