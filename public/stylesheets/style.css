@@ -81,3 +81,11 @@ a {
   height: 100%;
   width: 65%;
 }
+
+.blue {
+  color: #008cba !important;
+}
+
+.blue:hover {
+  color: white !important;
+}

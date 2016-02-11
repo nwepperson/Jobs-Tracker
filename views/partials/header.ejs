@@ -7,15 +7,15 @@
     <ul class="nav navbar-nav navbar-left">
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/">home</a></li>
+      <li><a class="blue" href="/">home</a></li>
       <% if (currentUser) { %>
-        <li><a href="/jobs">jobs</a></li>
+        <li><a class="blue" href="/jobs">jobs</a></li>
       <% } %>
       <% if (currentUser) { %>
-        <li><a href="/users/show"><%= currentUser.local.email %></a></li>
-        <li><a href="/logout">logout</a></li>
+        <li><a class="blue" href="/users/show"><%= currentUser.local.email %></a></li>
+        <li><a class="blue" href="/logout">logout</a></li>
       <% } else { %>
-        <li><a href="/login">Login</a></li>
+        <li><a class="blue" href="/login">Login</a></li>
       <% } %>
     </ul>
   </div>
